@@ -107,6 +107,90 @@ const { exec } = require("child_process")
 
 const client = new WAConnection()
 
+const bad = JSON.parse(fs.readFileSync('./lib/bad.json'))
+const badword = JSON.parse(fs.readFileSync('./lib/badword.json'))
+const banned = JSON.parse(fs.readFileSync('./lib/banned.json'))
+const nsfw_ = JSON.parse(fs.readFileSync('./lib/nsfwz.json'))
+const NoLink = JSON.parse(fs.readFileSync('./lib/NoLink.json'))
+const simi_ = JSON.parse(fs.readFileSync('./lib/Simsimi.json'))
+const limit = JSON.parse(fs.readFileSync('./lib/limit.json'))
+const welkom = JSON.parse(fs.readFileSync('./lib/welcome.json'))
+const left = JSON.parse(fs.readFileSync('./lib/left.json'))
+const muted = JSON.parse(fs.readFileSync('./lib/muted.json'))
+const setting = JSON.parse(fs.readFileSync('./lib/setting.json'))
+const msgLimit = JSON.parse(fs.readFileSync('./lib/msgLimit.json'))
+const adminNumber = JSON.parse(fs.readFileSync('./lib/admin.json'))
+const regis = JSON.parse(fs.readFileSync('./lib/data/regis.json'))
+
+const mess = {
+            wait: `*Tunggu!* Permintaan Anda sedang diproses \n\n-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n\n${donate()}`,
+            error: {
+                St: `[❗] Kirim gambar dengan caption *${prefix}sticker* atau tag gambar yang sudah dikirim`,
+                Ti: `[❗] Replay sticker dengan caption *${prefix}stickertoimg* atau tag sticker yang sudah dikirim`,
+                Qm: '[❗] Terjadi kesalahan, mungkin themenya tidak tersedia!',
+                Yt3: '[❗] Terjadi kesalahan, tidak dapat meng konversi ke mp3!',
+                Yt4: '[❗] Terjadi kesalahan, mungkin error di sebabkan oleh sistem.',
+                Ig: '[❗] Terjadi kesalahan, mungkin karena akunnya private',
+                Ki: '[❗] Bot tidak bisa mengeluarkan Admin group!',
+                Sp: '[❗] Bot tidak bisa mengeluarkan Admin',
+                Ow: '[❗] Bot tidak bisa mengeluarkan Owner',
+                Bk: '[❗] Bot tidak bisa memblockir Owner',
+                Ad: '[❗] Tidak dapat menambahkan target, mungkin karena di private',
+                Iv: '[❗] Link yang anda kirim tidak valid!'
+            }
+        }
+
+        const apiKey = 'APIKEY' // apikey you can get it at https://mhankbarbarss.herokuapp.com/api
+        const vhtear = 'APIKEY' // apikey from vhtear
+        const time = moment(t * 1000).format('DD/MM HH:mm:ss')
+        const timu = moment(t * 1000).format('DD/MM/YYYY');
+        const timi = moment(t * 1000).add(30, 'days').calendar();
+        const botNumber = await aksa.getHostNumber()
+        const blockNumber = await aksa.getBlockedIds()
+        const groupId = isGroupMsg ? chat.groupMetadata.id : ''
+        const groupAdmins = isGroupMsg ? await aksa.getGroupAdmins(groupId) : ''
+        const isGroupAdmins = isGroupMsg ? groupAdmins.includes(sender.id) : false
+        const isBotGroupAdmins = isGroupMsg ? groupAdmins.includes(botNumber + '@c.us') : false
+        //const chats = (type === 'chat') ? body : (type === 'image' || type === 'video') ? caption : ''
+        const serial = sender.id
+        const pengirim = JSON.parse(fs.readFileSync('./lib/user.json'))
+        const uwong = pengirim[Math.floor(Math.random() * pengirim.length)];
+        const isPrivate = sender.id === chat.contact.id
+        const isRegis = message ? regis.includes(sender.id) : false
+
+        const isAdmin = adminNumber.includes(sender.id)
+        const ownerNumber = ["6282387804410@c.us", "17073546544@c.us"] // replace with your whatsapp number
+        const isOwner = ownerNumber.includes(sender.id)
+        const isBanned = banned.includes(sender.id)
+        const isBlocked = blockNumber.includes(sender.id)
+        const isNsfw = isGroupMsg ? nsfw_.includes(chat.id) : false
+        const isMe = true
+        const isSimi = isGroupMsg ? simi_.includes(chat.id) : false
+        //const isBw = isGroupMsg ? nobw.includes(chat.id) : false
+        //const isAntilink = isGroupMsg ? antilink.includes(chat.id) : false
+        global.pollfile = 'poll_Config_' + chat.id + '.json'
+        global.voterslistfile = 'poll_voters_Config_' + chat.id + '.json'
+        const uaOverride = 'WhatsApp/2.2029.4 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
+        const isUrl = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi)
+        const isWhite = (chatId) => adminNumber.includes(chatId) ? true : false
+        const isWhiteList = (chatId) => {
+            if (adminNumber.includes(sender.id)) {
+                if (muted.includes(chatId)) return false
+                return true
+            } else {
+                return false
+            }
+        }
+
+
+        const isBadWord = isGroupMsg ? badword.includes(chat.id) : false
+        const isNoLink = isGroupMsg ? NoLink.includes(chat.id) : false
+        const url = args.length !== 0 ? args[0] : ''
+
+        const tutor = 'https://i.ibb.co/Hp1XGbL/a4dec92b8922.jpg'
+        const errorurl = 'https://1.bp.blogspot.com/-Qr7Wq8rfjEA/X7zyydUwBfI/AAAAAAAALa0/DQCeziWRu4MNBhhcL-AbH4XnYQsil32hwCLcBGAsYHQ/w300-h640/WhatsApp%2BImage%2B2020-11-24%2Bat%2B18.33.52.jpeg'
+        const errorurl2 = 'https://1.bp.blogspot.com/-Qr7Wq8rfjEA/X7zyydUwBfI/AAAAAAAALa0/DQCeziWRu4MNBhhcL-AbH4XnYQsil32hwCLcBGAsYHQ/w300-h640/WhatsApp%2BImage%2B2020-11-24%2Bat%2B18.33.52.jpeg'
+
 client.on('qr', qr => {
    qrcode.generate(qr, { small: true })
    console.log(`[ ${time} ] QR code is ready, subscribe Aris187 ID`)
@@ -753,7 +837,7 @@ case 'filmanime':
           case 'creator':
             client.sendContact(from, '6285722553839@c.us')
             break
-      case 'tts':
+      if 'tts':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!tts [id, en, jp, ar] [teks]*, contoh *!tts id halo semua*')
             const ttsId = require('node-gtts')('id')
             const ttsEn = require('node-gtts')('en')
@@ -783,7 +867,7 @@ case 'filmanime':
                 client.reply(from, 'Masukkan data bahasa : [id] untuk indonesia, [en] untuk inggris, [jp] untuk jepang, dan [ar] untuk arab', id)
             }
             break     
-      case 'stickergif':
+      if 'stickergif':
             if (isMedia) {
                 if (mimetype === 'video/mp4' && message.duration < 10 || mimetype === 'image/gif' && message.duration < 10) {
                     const mediaData = await decryptMedia(message, uaOverride)
@@ -799,7 +883,7 @@ case 'filmanime':
                 )
             }
             break     
-     case 'sticker':
+     if 'sticker':
             if (isMedia && type === 'image') {
                 const mediaData = await decryptMedia(message, uaOverride)
                 const imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
@@ -824,3 +908,96 @@ case 'filmanime':
            break
    }
 })
+
+if (isMuted(chatId) && banChat() && !isBlocked && !isBanned || isOwner) {
+            switch (command) {
+                //owner menu----------------------------------------------------------------------------------------------------------------------------
+                case `${prefix}banchat`:
+                    if (setting.banChats === true) return
+                    if (!isOwner) return aksa.reply(dari, 'Perintah ini hanya bisa di gunakan oleh Owner Lucya!', id)
+                    setting.banChats = true
+                    banChats = true
+                    fs.writeFileSync('./lib/setting.json', JSON.stringify(setting, null, 2))
+                    aksa.reply(dari, 'Global chat has been enable!', id)
+                    break
+                case `prefix`:
+                    aksa.reply(dari, `*Lucya is Use ( ${prefix} ) Prefix!.* 
+_Prefix adalah tanda di awal perintah._
+_Contoh: ${prefix}menu_`, id)
+                    break
+                case `${prefix}setprefix`:
+                    if (!isOwner) return aksa.reply(dari, 'Maaf, Fitur ini hanya untuk OWNER dan ADMIN Lucya!', id)
+                    if (args.length === 1) return aksa.reply(dari, `*Kirim Perintah ${prefix}setto [prefix baru]*. 
+Contoh: ${prefix}setprefix #`, id)
+                    const pf = body.slice(11)
+                    setting.prefix = `${pf}`
+                    prefix = `${pf}`
+                    fs.writeFileSync('./lib/setting.json', JSON.stringify(setting, null, 2))
+                    aksa.reply(dari, `Change Prefix To ${pf} SUCCESS!`, id)
+                    break
+}
+        }
+        // MRHRTZ
+        if (isGroupMsg && isBadWord) {
+            if (bad.includes(chats)) {
+                //if (!isBadWord) return aksa.reply(dari, 'Fitur ANTI BADWORD belum Aktif Pak', id)
+                if (!isGroupAdmins) {
+                    return aksa.reply(dari, "JAGA UCAPAN DONG!! 😠", id)
+                        .then(() => aksa.removeParticipant(groupId, sender.id))
+                        .then(() => {
+                            aksa.sendText(dari, `*「 ANTI BADWORD 」*\nKamu dikick karena berkata kasar!`)
+                        }).catch(() => aksa.sendText(dari, `Untung cya bukan admin, kalo admin udah cya kick!`))
+                } else {
+                    return aksa.reply(dari, "Tolong Jaga Ucapan Min 😇", id)
+                }
+            }
+        }
+
+
+
+        if (body === `${prefix}mute` && isMuted(chatId) == true) {
+            if (isGroupMsg) {
+                if (!isGroupAdmins) return aksa.reply(dari, 'Maaf, perintah ini hanya dapat dilakukan oleh admin Lucya!', id)
+                if (isMsgLimit(serial)) {
+                    return
+                } else {
+                    addMsgLimit(serial)
+                }
+                muted.push(chatId)
+                fs.writeFileSync('./lib/muted.json', JSON.stringify(muted, null, 2))
+                aksa.reply(dari, `Bot telah di mute pada chat ini! ${prefix}unmute untuk unmute`, id)
+            } else {
+                if (isMsgLimit(serial)) {
+                    return
+                } else {
+                    addMsgLimit(serial)
+                }
+                muted.push(chatId)
+                fs.writeFileSync('./lib/muted.json', JSON.stringify(muted, null, 2))
+                reply(dari, `Bot telah di mute pada chat ini! ${prefix}unmute untuk unmute!`, id)
+            }
+        }
+        if (body === `${prefix}unmute` && isMuted(chatId) == false) {
+            if (isGroupMsg) {
+                if (!isGroupAdmins) return aksa.reply(dari, 'Maaf, perintah ini hanya dapat dilakukan oleh admin Lucya!', id)
+                if (isMsgLimit(serial)) {
+                    return
+                } else {
+                    addMsgLimit(serial)
+                }
+                let index = muted.indexOf(chatId);
+                muted.splice(index, 1)
+                fs.writeFileSync('./lib/muted.json', JSON.stringify(muted, null, 2))
+                aksa.reply(dari, 'Bot telah di unmute!', id)
+            } else {
+                if (isMsgLimit(serial)) {
+                    return
+                } else {
+                    addMsgLimit(serial)
+                }
+                let index = muted.indexOf(chatId);
+                muted.splice(index, 1)
+                fs.writeFileSync('./lib/muted.json', JSON.stringify(muted, null, 2))
+                aksa.reply(dari, 'Bot telah di unmute!', id)
+            }
+        }
