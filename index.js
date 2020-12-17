@@ -141,10 +141,6 @@ const mess = {
         }
 
         const apiKey = 'APIKEY' // apikey you can get it at https://mhankbarbarss.herokuapp.com/api
-        const vhtear = 'APIKEY' // apikey from vhtear
-        const time = moment(t * 1000).format('DD/MM HH:mm:ss')
-        const timu = moment(t * 1000).format('DD/MM/YYYY');
-        const timi = moment(t * 1000).add(30, 'days').calendar();
         const botNumber = await aksa.getHostNumber()
         const blockNumber = await aksa.getBlockedIds()
         const groupId = isGroupMsg ? chat.groupMetadata.id : ''
