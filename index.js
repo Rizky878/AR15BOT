@@ -18,12 +18,12 @@ const arrayBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Jul
 const bulan = arrayBulan[moment().format('MM') - 1]
 
 const config = {
-    A187: '👾AR15BOT👾',
-    instagram: 'https://instagram.com/_sadboy.ig',
-    nomer: 'wa.me/6285722553839',
+    A187: 'Rizky Bot',
+    instagram: 'https://instagram.com/_rizkyfadilah8',
+    nomer: 'wa.me/6282387804410',
     aktif: '24 JAM',
-    youtube: 'https://youtube.com/channel/UCGYLWtyT9IADYNUiK0uZiGg',
-    whatsapp: 'https://chat.whatsapp.com/DSSHmG2KjKJLoFp9B9mkVs',
+    youtube: 'https://www.youtube.com/channel/UCwuFtaAemHVPO67Aopv6BXg',
+    whatsapp: 'https://chat.whatsapp.com/LLCSpSL2S8A1NJwTnMIgWY',
     tanggal: `TANGGAL: ${moment().format('DD')} ${bulan} ${moment().format('YYYY')}`,
     waktu: time
 }
@@ -189,7 +189,7 @@ const mess = {
 
 client.on('qr', qr => {
    qrcode.generate(qr, { small: true })
-   console.log(`[ ${time} ] QR code is ready, subscribe Aris187 ID`)
+   console.log(`[ ${time} ] QR code is ready, subscribe Rizky Fadilah`)
 })
 
 client.on('credentials-updated', () => {
@@ -942,7 +942,7 @@ Contoh: ${prefix}setprefix #`, id)
                         .then(() => aksa.removeParticipant(groupId, sender.id))
                         .then(() => {
                             aksa.sendText(dari, `*「 ANTI BADWORD 」*\nKamu dikick karena berkata kasar!`)
-                        }).catch(() => aksa.sendText(dari, `Untung cya bukan admin, kalo admin udah cya kick!`))
+                        }).catch(() => aksa.sendText(dari, `Untung ikybot bukan admin, kalo admin udah ikybot kick!`))
                 } else {
                     return aksa.reply(dari, "Tolong Jaga Ucapan Min 😇", id)
                 }
