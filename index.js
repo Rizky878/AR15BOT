@@ -141,7 +141,6 @@ const mess = {
         }
 
         const apiKey = 'APIKEY' // apikey you can get it at https://mhankbarbarss.herokuapp.com/api
-        const botNumber = await aksa.getHostNumber()
         const blockNumber = await aksa.getBlockedIds()
         const groupId = isGroupMsg ? chat.groupMetadata.id : ''
         const groupAdmins = isGroupMsg ? await aksa.getGroupAdmins(groupId) : ''
